@@ -1,0 +1,2 @@
+#!/bin/bash
+cat /etc/hosts | grep rec_dns | awk 'nameserver {print $1}' > /etc/resolv.conf

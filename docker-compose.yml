@@ -1,0 +1,16 @@
+fns:
+  hostname: fns
+  build: fns/
+  ports:
+    - "10053:53/udp"
+  links:
+    - ans
+client:
+  hostname: client
+  build: client/
+  links:
+    - fns
+    - ans
+ans:
+  hostname: ans
+  build: ans

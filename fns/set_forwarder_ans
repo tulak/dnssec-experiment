@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /etc/bind/
+ANS_IP=$(get_host_ip ans)
+sed "s/8.8.8.8/$ANS_IP/" named.conf.options > named.conf.options.new
+mv named.conf.options.new named.conf.options

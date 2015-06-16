@@ -1,0 +1,14 @@
+#!/bin/bash
+echo 'setting NS IP'
+cd /var/cache/bind
+
+IP=$(ifconfig eth0 | grep -oP 'addr:([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)' | sed 's/addr://')
+
+OLD_ADDR=6.6.6.6
+
+for FILE in *.zone
+do
+  sed "s/$OLD_ADDR/$IP/" $FILE > $FILE.new
+  mv $FILE.new $FILE
+done
+

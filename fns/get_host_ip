@@ -1,0 +1,2 @@
+#!/bin/bash
+cat /etc/hosts | grep $1 | head -1 | awk '{print $1}'

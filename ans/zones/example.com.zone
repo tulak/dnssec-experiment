@@ -1,0 +1,21 @@
+; BIND db file for example.com
+
+$TTL 86400
+
+@       IN      SOA     ns1.example.com.      tulak.netspace.sk. (
+                        2015060901  ; serial number YYMMDDNN
+                        28800           ; Refresh
+                        7200            ; Retry
+                        864000          ; Expire
+                        86400           ; Min TTL
+      )
+
+                NS      ns1.example.com. 
+                NS      ns2.example.com. 
+
+
+$ORIGIN example.com.
+
+ns1 IN  A 6.6.6.6 
+ns2 IN  A 6.6.6.6 
+@ IN  A 10.6.6.6 

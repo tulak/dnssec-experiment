@@ -1,0 +1,4 @@
+zone "pir.org" {
+     type master;
+     file "/var/cache/bind/pir.org.zone.signed";
+};

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cd /var/cache/bind
+
+for ZONE_FILE in *.zone
+do
+  ZONE=$(echo $ZONE_FILE | sed 's/.zone//')
+  dnssec-keygen -a NSEC3RSASHA1 -b 2048 -n ZONE $ZONE
+  dnssec-keygen -f KSK -a NSEC3RSASHA1 -b 4096 -n ZONE $ZONE
+
+  for KEY_FILE in K$ZONE*.key
+  do
+    echo "\$INCLUDE $KEY_FILE">> $ZONE_FILE
+  done
+done
